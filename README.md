@@ -177,16 +177,69 @@ Longer-horizon macro forecasting
 
 # 🛠 8. How to Run the Code
 
-(or the conda equivalent)
+## Step 1 — Download required data
 
-Run full analysis
-jupyter notebook DS340W_Final.ipynb
+The repository requires the full dataset inside the data/ folder.
+Inside data/features/, there are two versions of feature datasets:
 
-📧 10. Contact
+### 1. features/only_features/
 
-For questions or collaboration:
+Contains datasets with 32 technical indicators only
+Used for the no-macro baseline experiment
 
-Hyunwoo Jang
-hfj5102@psu.edu
+### 2. features/features_with_ME/
 
-Penn State University — Data Science
+Contains datasets with 32 technical + 5 macro indicators
+Used for the macro-enhanced experiment
+
+# 📌 Important:
+Make sure you download the entire data/ directory (including both feature folders) before running any notebook.
+
+# Step 2 — Install dependencies
+
+If using pip:
+pip install -r requirements.txt
+
+If using conda:
+conda env create -f environment.yml
+conda activate ds340w
+
+# Step 3 — Run notebooks in the correct order
+
+Because each notebook builds on the previous step,
+the correct execution order is:
+
+## ✅ 1) DS340W_code_no_macro.ipynb
+
+Runs the technical-only model pipeline
+(32 features, no macroeconomic indicators)
+
+Outputs:
+
+Baseline MAE
+Baseline accuracy
+Baseline trading returns
+
+## ✅ 2) DS340W_code_macro.ipynb
+
+Runs the macro-enhanced pipeline
+(32 technical + 5 macro indicators)
+
+Outputs:
+
+Baseline MAE
+Baseline accuracy
+Baseline trading returns
+
+## ✅ 3) DS340W_Final.ipynb (full analysis)
+
+Combines all results and performs:
+
+MAE summary
+Trading performance summary
+Market regime analysis
+Drawdown heatmaps
+
+Final conclusions
+
+This notebook produces all the figures used in the presentation and final paper.
